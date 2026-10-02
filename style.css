@@ -1,0 +1,1875 @@
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --primary: #ef233c;
+    --primary-dark: #c9182b;
+
+    --yellow: #ffcc00;
+
+    --background: #f5f7fb;
+    --surface: #ffffff;
+    --surface-2: #f0f2f6;
+
+    --text: #171923;
+    --text-light: #6b7280;
+
+    --border: #e5e7eb;
+
+    --shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+
+    --radius: 20px;
+
+    --transition: 0.25s ease;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark {
+
+    --background: #101216;
+    --surface: #191c22;
+    --surface-2: #22262e;
+
+    --text: #f5f5f5;
+    --text-light: #a6acb8;
+
+    --border: #30343d;
+
+    --shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    height: 80px;
+
+    padding:
+        0 max(20px, calc((100% - 1200px) / 2));
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: var(--surface);
+
+    border-bottom:
+        1px solid var(--border);
+
+    backdrop-filter:
+        blur(15px);
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.logo h1 {
+
+    font-size: 1.5rem;
+
+    line-height: 1;
+}
+
+
+.logo p {
+
+    margin-top: 4px;
+
+    color: var(--text-light);
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   POKEBALL
+========================================================= */
+
+.pokeball {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ef233c 0 46%,
+            #222 46% 54%,
+            #ffffff 54% 100%
+        );
+
+    border:
+        3px solid #222;
+
+    position: relative;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.15);
+}
+
+
+.pokeball span {
+
+    position: absolute;
+
+    width: 13px;
+
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 3px solid #222;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   HEADER BUTTONS
+========================================================= */
+
+.header-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.header-button,
+.theme-button {
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    border-radius: 12px;
+
+    transition:
+        transform var(--transition),
+        background var(--transition);
+}
+
+
+.header-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        9px 13px;
+}
+
+
+.header-button:hover,
+.theme-button:hover {
+
+    transform: translateY(-2px);
+
+    background: var(--surface-2);
+}
+
+
+.header-button b {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 21px;
+
+    height: 21px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 0.7rem;
+}
+
+
+.theme-button {
+
+    width: 42px;
+
+    height: 42px;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    width: min(1200px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding-bottom: 80px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    margin-top: 35px;
+
+    min-height: 280px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 45px;
+
+    background:
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(255,255,255,.25),
+            transparent 20%
+        ),
+        linear-gradient(
+            120deg,
+            #ef233c,
+            #c9184a 50%,
+            #7b2cbf
+        );
+
+    color: white;
+
+    box-shadow:
+        0 20px 50px rgba(201,24,74,.25);
+}
+
+
+.hero::after {
+
+    content: "⚡";
+
+    position: absolute;
+
+    right: 8%;
+
+    bottom: -35px;
+
+    font-size: 14rem;
+
+    opacity: .1;
+
+    transform: rotate(-15deg);
+}
+
+
+.hero-content {
+
+    max-width: 650px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.hero-label {
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.16);
+
+    font-size: .75rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.hero h2 {
+
+    font-size:
+        clamp(2.3rem, 6vw, 4.5rem);
+
+    line-height: .95;
+
+    margin:
+        18px 0;
+}
+
+
+.hero h2 span {
+
+    color: var(--yellow);
+
+}
+
+
+.hero p {
+
+    max-width: 560px;
+
+    font-size: 1.05rem;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,.9);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-section {
+
+    position: relative;
+
+    margin-top: -35px;
+
+    z-index: 10;
+}
+
+
+.search-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 8px;
+
+    background: var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.search-icon {
+
+    margin-left: 15px;
+
+    font-size: 1.2rem;
+}
+
+
+.search-box input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    padding: 14px 5px;
+
+    font-size: 1rem;
+}
+
+
+.search-box input::placeholder {
+
+    color: var(--text-light);
+}
+
+
+.search-button {
+
+    border: none;
+
+    background: var(--primary);
+
+    color: white;
+
+    padding:
+        14px 25px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+
+.search-button:hover {
+
+    background: var(--primary-dark);
+
+    transform: translateY(-2px);
+}
+
+
+.clear-search {
+
+    border: none;
+
+    background: var(--surface-2);
+
+    color: var(--text-light);
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    font-size: 1.3rem;
+}
+
+
+/* =========================================================
+   SUGGESTIONS
+========================================================= */
+
+.suggestions {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    top: calc(100% + 8px);
+
+    background: var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+
+    z-index: 20;
+}
+
+
+.suggestion {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 15px;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition);
+}
+
+
+.suggestion:hover {
+
+    background: var(--surface-2);
+}
+
+
+.suggestion img {
+
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: contain;
+}
+
+
+.suggestion-name {
+
+    text-transform: capitalize;
+
+    font-weight: 700;
+}
+
+
+.suggestion-id {
+
+    color: var(--text-light);
+
+    font-size: .8rem;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.controls {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    align-items: end;
+
+    margin-top: 35px;
+
+    padding: 20px;
+
+    background: var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+}
+
+
+.filter-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    min-width: 180px;
+}
+
+
+.filter-group label {
+
+    font-size: .75rem;
+
+    color: var(--text-light);
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
+}
+
+
+.filter-group select {
+
+    border:
+        1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    padding: 11px 13px;
+
+    border-radius: 10px;
+
+    outline: none;
+}
+
+
+.random-button {
+
+    border: none;
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    padding: 12px 17px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    transition:
+        transform var(--transition);
+}
+
+
+.random-button:hover {
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESULTS HEADER
+========================================================= */
+
+.results-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin: 40px 0 20px;
+}
+
+
+.results-header h2 {
+
+    font-size: 1.7rem;
+}
+
+
+.results-header p {
+
+    color: var(--text-light);
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.pokemon-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.pokemon-card {
+
+    background: var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+
+    animation:
+        cardIn .4s ease both;
+}
+
+
+@keyframes cardIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+.pokemon-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    box-shadow:
+        0 20px 35px rgba(0,0,0,.12);
+
+    border-color:
+        rgba(239,35,60,.4);
+}
+
+
+.card-image {
+
+    height: 190px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--card-color),
+            color-mix(
+                in srgb,
+                var(--card-color),
+                white 40%
+            )
+        );
+}
+
+
+.card-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+
+    height: 170px;
+
+    border-radius: 50%;
+
+    border:
+        20px solid rgba(255,255,255,.08);
+}
+
+
+.card-image img {
+
+    width: 175px;
+
+    height: 175px;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.pokemon-card:hover .card-image img {
+
+    transform:
+        scale(1.08)
+        translateY(-4px);
+}
+
+
+.card-id {
+
+    position: absolute;
+
+    top: 13px;
+
+    left: 14px;
+
+    color: rgba(255,255,255,.85);
+
+    font-weight: 800;
+
+    font-size: .85rem;
+
+    z-index: 4;
+}
+
+
+.favorite-button {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    z-index: 5;
+
+    width: 36px;
+
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.9);
+
+    font-size: 1.1rem;
+
+    transition:
+        transform .2s ease;
+}
+
+
+.favorite-button:hover {
+
+    transform:
+        scale(1.1);
+}
+
+
+.card-body {
+
+    padding: 18px;
+}
+
+
+.card-name {
+
+    text-transform: capitalize;
+
+    font-size: 1.35rem;
+
+    margin-bottom: 10px;
+}
+
+
+.types {
+
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+
+.type {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 11px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-size: .72rem;
+
+    font-weight: 800;
+
+    text-transform: capitalize;
+}
+
+
+/* =========================================================
+   TYPE COLORS
+========================================================= */
+
+.type-normal {
+    background: #a8a77a;
+}
+
+.type-fire {
+    background: #ee8130;
+}
+
+.type-water {
+    background: #6390f0;
+}
+
+.type-electric {
+    background: #f7d02c;
+    color: #222;
+}
+
+.type-grass {
+    background: #7ac74c;
+}
+
+.type-ice {
+    background: #96d9d6;
+    color: #222;
+}
+
+.type-fighting {
+    background: #c22e28;
+}
+
+.type-poison {
+    background: #a33ea1;
+}
+
+.type-ground {
+    background: #e2bf65;
+    color: #222;
+}
+
+.type-flying {
+    background: #a98ff3;
+}
+
+.type-psychic {
+    background: #f95587;
+}
+
+.type-bug {
+    background: #a6b91a;
+}
+
+.type-rock {
+    background: #b6a136;
+}
+
+.type-ghost {
+    background: #735797;
+}
+
+.type-dragon {
+    background: #6f35fc;
+}
+
+.type-dark {
+    background: #705746;
+}
+
+.type-steel {
+    background: #b7b7ce;
+    color: #222;
+}
+
+.type-fairy {
+    background: #d685ad;
+}
+
+
+/* =========================================================
+   LOAD MORE
+========================================================= */
+
+.load-more-container {
+
+    text-align: center;
+
+    margin-top: 40px;
+}
+
+
+.load-more {
+
+    border:
+        1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    padding:
+        13px 25px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    transition:
+        transform var(--transition),
+        background var(--transition);
+}
+
+
+.load-more:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        var(--surface-2);
+}
+
+
+.load-more.hidden {
+
+    display: none;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 50px;
+
+    color: var(--text-light);
+}
+
+
+.spinner {
+
+    width: 45px;
+
+    height: 45px;
+
+    border:
+        4px solid var(--surface-2);
+
+    border-top-color:
+        var(--primary);
+
+    border-radius: 50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-message {
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    background: var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+}
+
+
+.error-icon {
+
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+
+.error-message h3 {
+
+    margin-bottom: 7px;
+}
+
+
+.error-message p {
+
+    color: var(--text-light);
+
+    margin-bottom: 20px;
+}
+
+
+.error-message button {
+
+    border: none;
+
+    background: var(--primary);
+
+    color: white;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+.modal-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.65);
+
+    backdrop-filter:
+        blur(7px);
+}
+
+
+.modal-content {
+
+    width:
+        min(850px, 100%);
+
+    max-height:
+        92vh;
+
+    overflow-y: auto;
+
+    position: relative;
+
+    z-index: 2;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
+
+    animation:
+        modalIn .3s ease;
+}
+
+
+@keyframes modalIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.94)
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+.close-modal {
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 18px;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,.08);
+
+    color: var(--text);
+
+    font-size: 1.5rem;
+
+    z-index: 10;
+}
+
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: start;
+
+    padding: 35px 35px 0;
+}
+
+
+.modal-id {
+
+    color: var(--text-light);
+
+    font-weight: 800;
+}
+
+
+.modal-title h2 {
+
+    text-transform: capitalize;
+
+    font-size:
+        clamp(2rem, 5vw, 3.5rem);
+
+    margin: 5px 0 12px;
+}
+
+
+.modal-favorite {
+
+    width: 48px;
+
+    height: 48px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    font-size: 1.5rem;
+}
+
+
+/* =========================================================
+   MODAL IMAGE
+========================================================= */
+
+.modal-image-container {
+
+    height: 310px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+.modal-pokeball {
+
+    position: absolute;
+
+    width: 270px;
+
+    height: 270px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(239,35,60,.07);
+
+    border:
+        35px solid rgba(239,35,60,.04);
+}
+
+
+.modal-image-container img {
+
+    width: 300px;
+
+    height: 300px;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(
+            0 20px 15px rgba(0,0,0,.2)
+        );
+}
+
+
+/* =========================================================
+   MODAL INFO
+========================================================= */
+
+.modal-info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    padding:
+        0 35px;
+}
+
+
+.modal-info-card {
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: var(--surface-2);
+
+    text-align: center;
+}
+
+
+.modal-info-card span {
+
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: .75rem;
+
+    margin-bottom: 5px;
+}
+
+
+.modal-info-card strong {
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   MODAL SECTIONS
+========================================================= */
+
+.modal-section {
+
+    padding:
+        30px 35px 0;
+}
+
+
+.modal-section h3 {
+
+    font-size: 1.2rem;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   MODAL STATS
+========================================================= */
+
+.modal-stats {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.stat-row {
+
+    display: grid;
+
+    grid-template-columns:
+        130px 45px 1fr;
+
+    gap: 10px;
+
+    align-items: center;
+}
+
+
+.stat-name {
+
+    font-weight: 700;
+
+    color: var(--text-light);
+}
+
+
+.stat-value {
+
+    text-align: right;
+
+    font-weight: 800;
+}
+
+
+.stat-bar {
+
+    height: 10px;
+
+    background: var(--surface-2);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.stat-progress {
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            #ff758f
+        );
+}
+
+
+/* =========================================================
+   ABILITIES
+========================================================= */
+
+.modal-abilities {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    padding-bottom: 35px;
+}
+
+
+.ability {
+
+    padding:
+        10px 14px;
+
+    border-radius: 10px;
+
+    background: var(--surface-2);
+
+    font-weight: 700;
+
+    text-transform: capitalize;
+}
+
+
+.ability.hidden-ability {
+
+    background:
+        rgba(255,204,0,.15);
+
+    border:
+        1px solid var(--yellow);
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    z-index: 2000;
+
+    padding:
+        13px 18px;
+
+    background: #222;
+
+    color: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    transform:
+        translateY(100px);
+
+    opacity: 0;
+
+    transition:
+        .3s ease;
+}
+
+
+.toast.show {
+
+    transform:
+        translateY(0);
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .pokemon-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .container {
+
+        width:
+            min(100% - 25px, 600px);
+    }
+
+
+    .topbar {
+
+        padding:
+            0 15px;
+    }
+
+
+    .header-button span {
+
+        display: none;
+    }
+
+
+    .hero {
+
+        padding: 35px 25px;
+
+        min-height: 250px;
+    }
+
+
+    .pokemon-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 14px;
+    }
+
+
+    .controls {
+
+        align-items: stretch;
+    }
+
+
+    .filter-group {
+
+        flex: 1;
+
+        min-width: 140px;
+    }
+
+
+    .random-button {
+
+        width: 100%;
+    }
+
+
+    .modal-info-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        padding:
+            0 20px;
+    }
+
+
+    .modal-header,
+    .modal-section {
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .logo h1 {
+
+        font-size: 1.2rem;
+    }
+
+
+    .hero h2 {
+
+        font-size: 2.4rem;
+    }
+
+
+    .hero p {
+
+        font-size: .9rem;
+    }
+
+
+    .search-box {
+
+        flex-wrap: wrap;
+    }
+
+
+    .search-box input {
+
+        width:
+            calc(100% - 60px);
+    }
+
+
+    .search-button {
+
+        width: 100%;
+    }
+
+
+    .pokemon-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .card-image {
+
+        height: 150px;
+    }
+
+
+    .card-image img {
+
+        width: 135px;
+
+        height: 135px;
+    }
+
+
+    .card-body {
+
+        padding: 13px;
+    }
+
+
+    .card-name {
+
+        font-size: 1.05rem;
+    }
+
+
+    .type {
+
+        font-size: .65rem;
+
+        padding:
+            4px 8px;
+    }
+
+
+    .modal-image-container {
+
+        height: 240px;
+    }
+
+
+    .modal-image-container img {
+
+        width: 230px;
+
+        height: 230px;
+    }
+
+
+    .stat-row {
+
+        grid-template-columns:
+            90px 35px 1fr;
+
+        font-size: .8rem;
+    }
+
+}

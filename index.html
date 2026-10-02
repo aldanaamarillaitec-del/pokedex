@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Pokédex interactiva con información de Pokémon"
+    >
+
+    <title>Pokédex | Pokémon Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            <div class="pokeball">
+                <span></span>
+            </div>
+
+            <div>
+                <h1>Pokédex</h1>
+                <p>Pokémon Explorer</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                id="favoritesButton"
+                class="header-button"
+                type="button"
+            >
+                ❤️
+                <span>Favoritos</span>
+                <b id="favoritesCount">0</b>
+            </button>
+
+            <button
+                id="themeButton"
+                class="theme-button"
+                type="button"
+                aria-label="Cambiar tema"
+            >
+                🌙
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+
+    <main class="container">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    POKÉMON DATABASE
+                </span>
+
+                <h2>
+                    Explorá el mundo
+                    <span>Pokémon</span>
+                </h2>
+
+                <p>
+                    Buscá, filtrá y descubrí información,
+                    estadísticas y habilidades de tus Pokémon favoritos.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BUSCADOR
+        ========================== -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <span class="search-icon">🔍</span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Buscar por nombre o número..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="clearSearch"
+                    class="clear-search hidden"
+                    type="button"
+                    aria-label="Limpiar búsqueda"
+                >
+                    ×
+                </button>
+
+                <button
+                    id="searchButton"
+                    class="search-button"
+                    type="button"
+                >
+                    Buscar
+                </button>
+
+            </div>
+
+            <div
+                id="suggestions"
+                class="suggestions hidden"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTROLES
+        ========================== -->
+
+        <section class="controls">
+
+            <div class="filter-group">
+
+                <label for="typeFilter">
+                    Tipo
+                </label>
+
+                <select id="typeFilter">
+
+                    <option value="all">
+                        Todos los tipos
+                    </option>
+
+                    <option value="normal">
+                        Normal
+                    </option>
+
+                    <option value="fire">
+                        Fuego
+                    </option>
+
+                    <option value="water">
+                        Agua
+                    </option>
+
+                    <option value="electric">
+                        Eléctrico
+                    </option>
+
+                    <option value="grass">
+                        Planta
+                    </option>
+
+                    <option value="ice">
+                        Hielo
+                    </option>
+
+                    <option value="fighting">
+                        Lucha
+                    </option>
+
+                    <option value="poison">
+                        Veneno
+                    </option>
+
+                    <option value="ground">
+                        Tierra
+                    </option>
+
+                    <option value="flying">
+                        Volador
+                    </option>
+
+                    <option value="psychic">
+                        Psíquico
+                    </option>
+
+                    <option value="bug">
+                        Bicho
+                    </option>
+
+                    <option value="rock">
+                        Roca
+                    </option>
+
+                    <option value="ghost">
+                        Fantasma
+                    </option>
+
+                    <option value="dragon">
+                        Dragón
+                    </option>
+
+                    <option value="dark">
+                        Siniestro
+                    </option>
+
+                    <option value="steel">
+                        Acero
+                    </option>
+
+                    <option value="fairy">
+                        Hada
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="sortFilter">
+                    Ordenar
+                </label>
+
+                <select id="sortFilter">
+
+                    <option value="id">
+                        Número
+                    </option>
+
+                    <option value="name">
+                        Nombre
+                    </option>
+
+                    <option value="hp">
+                        PS
+                    </option>
+
+                    <option value="attack">
+                        Ataque
+                    </option>
+
+                    <option value="defense">
+                        Defensa
+                    </option>
+
+                    <option value="speed">
+                        Velocidad
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                id="randomButton"
+                class="random-button"
+                type="button"
+            >
+                🎲 Pokémon aleatorio
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             RESULTADOS
+        ========================== -->
+
+        <section class="results-header">
+
+            <div>
+                <h2 id="resultsTitle">
+                    Todos los Pokémon
+                </h2>
+
+                <p id="resultsInfo">
+                    Cargando Pokémon...
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LOADING
+        ========================== -->
+
+        <div
+            id="loading"
+            class="loading hidden"
+        >
+
+            <div class="spinner"></div>
+
+            <p>
+                Cargando Pokémon...
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             ERROR
+        ========================== -->
+
+        <div
+            id="errorMessage"
+            class="error-message hidden"
+        >
+
+            <div class="error-icon">
+                ⚠️
+            </div>
+
+            <h3>
+                No encontramos ese Pokémon
+            </h3>
+
+            <p>
+                Revisá el nombre o número e intentá nuevamente.
+            </p>
+
+            <button
+                id="retryButton"
+                type="button"
+            >
+                Intentar nuevamente
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             GRID
+        ========================== -->
+
+        <section
+            id="pokemonGrid"
+            class="pokemon-grid"
+        ></section>
+
+
+        <!-- =========================
+             CARGAR MÁS
+        ========================== -->
+
+        <div class="load-more-container">
+
+            <button
+                id="loadMoreButton"
+                class="load-more"
+                type="button"
+            >
+                Cargar más Pokémon
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         MODAL
+    ========================== -->
+
+    <div
+        id="pokemonModal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalPokemonName"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+
+            <button
+                id="closeModal"
+                class="close-modal"
+                type="button"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+
+
+            <!-- MODAL HEADER -->
+
+            <div
+                id="modalHeader"
+                class="modal-header"
+            >
+
+                <div class="modal-title">
+
+                    <span
+                        id="modalPokemonId"
+                        class="modal-id"
+                    >
+                        #000
+                    </span>
+
+                    <h2 id="modalPokemonName">
+                        Pokémon
+                    </h2>
+
+                    <div
+                        id="modalTypes"
+                        class="types"
+                    ></div>
+
+                </div>
+
+                <button
+                    id="modalFavorite"
+                    class="modal-favorite"
+                    type="button"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <!-- IMAGEN -->
+
+            <div class="modal-image-container">
+
+                <div class="modal-pokeball"></div>
+
+                <img
+                    id="modalPokemonImage"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <!-- INFORMACIÓN -->
+
+            <div class="modal-info-grid">
+
+                <div class="modal-info-card">
+
+                    <span>
+                        Altura
+                    </span>
+
+                    <strong id="modalHeight">
+                        -
+                    </strong>
+
+                </div>
+
+                <div class="modal-info-card">
+
+                    <span>
+                        Peso
+                    </span>
+
+                    <strong id="modalWeight">
+                        -
+                    </strong>
+
+                </div>
+
+                <div class="modal-info-card">
+
+                    <span>
+                        Experiencia
+                    </span>
+
+                    <strong id="modalExperience">
+                        -
+                    </strong>
+
+                </div>
+
+                <div class="modal-info-card">
+
+                    <span>
+                        Total stats
+                    </span>
+
+                    <strong id="modalTotalStats">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <section class="modal-section">
+
+                <h3>
+                    📊 Estadísticas base
+                </h3>
+
+                <div
+                    id="modalStats"
+                    class="modal-stats"
+                ></div>
+
+            </section>
+
+
+            <!-- HABILIDADES -->
+
+            <section class="modal-section">
+
+                <h3>
+                    🧬 Habilidades
+                </h3>
+
+                <div
+                    id="modalAbilities"
+                    class="modal-abilities"
+                ></div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+        Pokémon agregado a favoritos
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
